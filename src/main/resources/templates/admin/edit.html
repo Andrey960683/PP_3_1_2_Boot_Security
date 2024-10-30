@@ -30,16 +30,21 @@
   <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
   <br>
   <p>
-    <label for="roleAdmin">Назначить админов</label>
-    <input type="checkbox" name="roleAdmin" id="roleAdmin">
+    <label for="role">Назначить роль</label>
+    <input type="checkbox" name="roles" id="role"
+           th:each="role : ${roles}"
+           th:text="${role.getRoleName()}"
+           th:value="${role.getRoleId()}"
+           th:field="*{roleSet}"/>
+  <div style="color: red" th:if="${#fields.hasErrors('roleSet')}" th:errors="*{roleSet}">RoleSet error</div>
   </p>
   <br>
   <input type="submit" value="Изменить"/>
   <br>
   <p></p>
-  <form th:method="GET" th:action="@{/admin/}">
-    <input type="submit" value="Назад"/>
-  </form>
+</form>
+<form th:method="GET" th:action="@{/admin}">
+  <input type="submit" value="Назад"/>
 </form>
 <p></p>
 <form th:method="GET" th:action="@{/logout}">

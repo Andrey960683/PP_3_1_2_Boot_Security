@@ -16,7 +16,7 @@ public class Role implements Serializable, GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleId;
 
-    @NotEmpty(message = "the role should not be missing")
+    @NotEmpty(message = "Укажите роль")
     @Column(name = "role_name", unique = true)
     private String roleName;
 
